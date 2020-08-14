@@ -8,11 +8,13 @@ import pathlib
 import shutil
 
 def main(argv):
-    kiloByteSize = 10240# 5120
+    SFileSize = 1024
+    LFileSize = 10240
+    XLFileSize = 51200
 
     def CreateDummyFile(size):
         currentDir = pathlib.Path(os.path.curdir)
-        dummyFile = currentDir.joinpath(".dummy")
+        dummyFile = currentDir.joinpath(".dummy%s" %size)
         if not dummyFile.exists():
             bar = Bar('Creating %s Mb dummy file' %(size/1000), max=size)
             with dummyFile.open(mode='w') as d:
@@ -36,7 +38,7 @@ def main(argv):
         sys.exit(2)
 
     #Create 5Mb local file
-    dummyFile = CreateDummyFile(kiloByteSize)
+    dummyFile = CreateDummyFile(LFileSize)
     source = str(dummyFile.absolute())
     target = str(drive.absolute())
 
@@ -44,7 +46,7 @@ def main(argv):
     tick = time.perf_counter()
     shutil.copy(source, target)
     elapsedTime = time.perf_counter() - tick
-    speed = round(kiloByteSize/elapsedTime/1000, 2)
+    speed = round(LFileSize/elapsedTime/1000, 2)
 
     #dummyFile.unlink()
 

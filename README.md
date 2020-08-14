@@ -1,10 +1,10 @@
 # USBSpeedTest
 
-## Intro
+A simple Python script to test the speed of a USB Drive. 
 
-A simple Python script to test the speed of a USB Drive. It first creates a large file on the local drive, and then uses shutil copy function to copy the file over to the given USB Drive.
+It first creates a large file on the local drive, and then uses shutil copy function to copy the file over to the given USB Drive.
 
-## Usage
+## Usage on Windows
 
 > python usbtest.py E
 
